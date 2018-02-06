@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="com.rideflow.stephen.rideflowvehicle.activity.logoutCountdown">
+    tools:context="com.rideflow.vehicle.activity.logoutCountdown">
 
     <!-- TODO: Update blank fragment layout -->
 

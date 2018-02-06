@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.rideflow.stephen.rideflowvehicle", appContext.getPackageName());
+        assertEquals("com.rideflow.vehicle", appContext.getPackageName());
     }
 }

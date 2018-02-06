@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.rideflow.stephen.rideflowvehicle.R;
+import com.rideflow.vehicle.R;
 import com.rideflow.vehicle.model.RouteSession;
 
 /**

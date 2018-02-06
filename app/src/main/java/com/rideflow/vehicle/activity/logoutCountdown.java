@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rideflow.stephen.rideflowvehicle.R;
+import com.rideflow.vehicle.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

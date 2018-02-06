@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rideflow.stephen.rideflowvehicle.com.rideflow.stephen.vehicle.activity.MainActivity">
+    tools:context="com.rideflow.vehicle.activity.MainActivity">
 
     <ImageView
         android:id="@+id/start_scanning_indicator"

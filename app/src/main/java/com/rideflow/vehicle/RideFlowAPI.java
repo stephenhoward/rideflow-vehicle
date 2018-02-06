@@ -8,8 +8,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.function.Consumer;
@@ -42,29 +44,61 @@ public class RideFlowAPI {
         return queue;
     }
 
+    public void get(String url, Consumer<JSONObject> callback, Consumer<VolleyError> errorCallback) {
+
+        doObjectRequest( Request.Method.GET, url, null, callback, errorCallback );
+    }
+
     public <T extends RideFlowModel> void post(String url, T payload, Consumer<JSONObject> callback, Consumer<VolleyError> errorCallback) {
 
         JSONObject json = payload.toJSON();
 
+        doObjectRequest( Request.Method.POST, url, json, callback, errorCallback );
+    }
+
+    private void doObjectRequest(int request_method, String url, JSONObject payload, Consumer<JSONObject> callback, Consumer<VolleyError> errorCallback ) {
+
         url = baseUrl + url;
 
-        JsonObjectRequest jsr = new JsonObjectRequest( Request.Method.POST, url, json,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.i("API","got response");
-                    callback.accept(response);
+        JsonObjectRequest jsr = new JsonObjectRequest( request_method, url, payload,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("API","got response");
+                        callback.accept(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("API",error.toString() );
+                        errorCallback.accept(error);
+                    }
                 }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.i("API",error.toString() );
-                    errorCallback.accept(error);
-                }
-            }
         );
+        getQueue().add(jsr);
+    }
 
+    public void getList(String url, Consumer<JSONArray> callback, Consumer<VolleyError> errorCallback) {
+
+        url = baseUrl + url;
+
+        JsonArrayRequest jsr = new JsonArrayRequest( url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.i("API","got response");
+                        callback.accept(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("API",error.toString() );
+                        errorCallback.accept(error);
+                    }
+                }
+        );
         getQueue().add(jsr);
     }
 

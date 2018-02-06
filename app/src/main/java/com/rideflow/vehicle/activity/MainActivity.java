@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.volley.VolleyError;
-import com.rideflow.stephen.rideflowvehicle.R;
+import com.rideflow.vehicle.R;
 import com.rideflow.vehicle.RideFlowAPI;
 import com.rideflow.vehicle.model.RouteSession;
 
@@ -32,7 +32,7 @@ import com.rideflow.vehicle.model.RouteSession;
 
 public class MainActivity extends Activity {
 
-    public static final String DRIVER_ID = "com.rideflow.stephen.rideflowvehicle.DRIVER_ID";
+    public static final String DRIVER_ID = "com.rideflow.vehicle.DRIVER_ID";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

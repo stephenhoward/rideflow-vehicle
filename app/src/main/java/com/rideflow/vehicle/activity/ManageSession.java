@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.rideflow.stephen.rideflowvehicle.R;
+import com.rideflow.vehicle.R;
 
 /**
  * Skeleton of an Android Things activity.
