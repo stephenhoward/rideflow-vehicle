@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RideFlow Vehicle</string>
+    <string name="route">Route</string>
+    <string name="driver">Driver</string>
+    <string name="start_session">Start Session</string>
+    <string name="transit_system_name">MIndy</string>
+    <string name="scan_nfc">Scan Pass Below</string>
+    <string name="ending_in">Ending in</string>
+    <string name="seconds">seconds</string>
+    <string name="pause_session">Pause Session</string>
+    <string name="resume_session">Resume Session</string>
+    <string name="end_session">End Session</string>
+</resources>
