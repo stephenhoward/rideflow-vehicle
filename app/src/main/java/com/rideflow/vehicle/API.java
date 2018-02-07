@@ -20,20 +20,20 @@ import java.util.function.Consumer;
  * Created by stephen on 2/4/18.
  */
 
-public class RideFlowAPI {
+public class API {
 
-    private static RideFlowAPI INSTANCE = new RideFlowAPI();
+    private static API INSTANCE = new API();
     private static RequestQueue queue   = null;
     private static String baseUrl = "https://rideapi.ourtransit.com/v1";
     private static Context context = null;
 
-    private RideFlowAPI() {};
+    private API() {};
 
     public static void setContext( Context ctx ) {
         context = ctx;
     }
 
-    public static RideFlowAPI getInstance() {
+    public static API getInstance() {
         return INSTANCE;
     }
 
@@ -49,7 +49,7 @@ public class RideFlowAPI {
         doObjectRequest( Request.Method.GET, url, null, callback, errorCallback );
     }
 
-    public <T extends RideFlowModel> void post(String url, T payload, Consumer<JSONObject> callback, Consumer<VolleyError> errorCallback) {
+    public <M extends Model> void post(String url, M payload, Consumer<JSONObject> callback, Consumer<VolleyError> errorCallback) {
 
         JSONObject json = payload.toJSON();
 

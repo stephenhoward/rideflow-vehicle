@@ -5,4 +5,7 @@ package com.rideflow.vehicle.model;
  */
 
 public class Driver {
+    static public String url() {
+        return "/users";
+    }
 }

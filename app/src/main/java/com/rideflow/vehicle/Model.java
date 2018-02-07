@@ -1,5 +1,6 @@
 package com.rideflow.vehicle;
 
+import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -7,12 +8,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Field;
+import java.util.function.Consumer;
 
 /**
  * Created by stephen on 2/6/18.
  */
 
-public class RideFlowModel {
+public abstract class Model {
+
+    public String id;
+
+    static public String url() {
+        return "";
+    }
 
     public JSONObject toJSON() {
         JSONObject jso = null;
@@ -29,31 +37,7 @@ public class RideFlowModel {
         return jso;
     }
 
-    public RideFlowModel newFromJSON(JSONObject jso) {
-
-        RideFlowModel model = null;
-
-        try {
-            model = this.getClass().newInstance();
-            model.setFromJSON(jso);
-        }
-        catch( InstantiationException e ) {
-            // couldn't create new instance
-        }
-        catch( IllegalAccessException e ) {
-            // couldn't access something'
-        }
-
-        return model;
-    }
-
     public void updateFromJSON(JSONObject jso) {
-
-        this.setFromJSON(jso);
-
-    }
-
-    private void setFromJSON(JSONObject jso) {
 
         JSONArray names = jso.names();
 
@@ -64,15 +48,24 @@ public class RideFlowModel {
 
                 field.set(this,jso.get(name));
             }
-            catch (NoSuchFieldException e) {
-                // Skip it;
-            }
-            catch (IllegalAccessException e ) {
-                // Not allowed to set the field?
-            }
-            catch (JSONException e){
-                // Indexing error?;
+            catch (Exception e) {
+                // TODO Exception
             }
         }
     }
+
+    public <M extends Model> void save(Consumer<M> callback, Consumer<VolleyError> errorCallback) {
+
+        String url = url();
+
+        if ( this.id != null && this.id != "" ) {
+            url += "/" + this.id;
+        }
+
+        API.getInstance().post( url, this,
+                (json)  -> { this.updateFromJSON(json); callback.accept((M) this); },
+                (error) -> { errorCallback.accept(error); }
+        );
+    }
+
 }

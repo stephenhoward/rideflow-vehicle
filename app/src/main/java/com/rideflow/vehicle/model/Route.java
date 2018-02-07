@@ -1,20 +1,16 @@
 package com.rideflow.vehicle.model;
 
-import com.android.volley.VolleyError;
-import com.rideflow.vehicle.RideFlowModel;
-
-import java.util.function.Consumer;
+import com.rideflow.vehicle.Model;
 
 /**
  * Created by stephen on 1/26/18.
  */
 
-public class Route extends RideFlowModel {
+public class Route extends Model {
     String id;
     String name;
 
-    public void getRoutes(Consumer<Route[]> callback, Consumer<VolleyError> errorCallback ) {
-        String url = "/routes";
+    static public String url() {
+        return "/routes";
     }
-
 }

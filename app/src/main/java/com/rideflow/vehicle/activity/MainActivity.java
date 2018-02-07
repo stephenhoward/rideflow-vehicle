@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.android.volley.VolleyError;
 import com.rideflow.vehicle.R;
-import com.rideflow.vehicle.RideFlowAPI;
+import com.rideflow.vehicle.API;
 import com.rideflow.vehicle.model.RouteSession;
 
 /**
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RideFlowAPI.setContext(this.getApplicationContext());
+        API.setContext(this.getApplicationContext());
     }
 
     public void scanCard (View view) {
