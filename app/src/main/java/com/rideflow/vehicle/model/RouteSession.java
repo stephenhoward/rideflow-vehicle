@@ -1,6 +1,5 @@
 package com.rideflow.vehicle.model;
 
-import android.location.Location;
 import android.util.Log;
 
 import com.android.volley.VolleyError;
@@ -16,12 +15,19 @@ import java.util.function.Consumer;
 public class RouteSession extends Model {
 
     public String         id;
-    public Location       location;
-    public Route          route;
-    public Driver         driver;
+    public double         latitude;
+    public double         longitude;
+    public String         route_id;
+    public String         driver_id;
+    public String         vehicle_id;
     public OffsetDateTime session_start;
     public OffsetDateTime session_end;
-    public Vehicle        vehicle;
+
+    Route route;
+    Driver driver;
+    Vehicle vehicle;
+
+    public RouteSession() {}
 
     static public String url() {
         return "/sessions";

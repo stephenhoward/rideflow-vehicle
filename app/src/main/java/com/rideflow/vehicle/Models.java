@@ -1,10 +1,10 @@
 package com.rideflow.vehicle;
 
 import com.android.volley.VolleyError;
-
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -21,24 +21,26 @@ public class Models {
         );
     }
 
-    static public <M extends Model> void getAll(Class<M> model_class, Consumer<M[]> callback, Consumer<VolleyError> errorCallback ) {
+    static public <M extends Model> void getAll(Class<M> model_class, Consumer<List<M>> callback, Consumer<VolleyError> errorCallback ) {
 
-        API.getInstance().getList( M.url(),
-                (json)  -> {
-                    M[] models = (M[]) Array.newInstance( model_class, json.length() );
+        List<M> models = new ArrayList<M>;
+
+        API.getInstance().getList(M.url(),
+                (json) -> {
 
                     try {
                         for (int i = 0; i < json.length(); i++) {
-                            models[i] = Models.newFromJSON( model_class, json.getJSONObject(i));
+                            models.add(Models.newFromJSON(model_class, json.getJSONObject(i)));
                         }
-                    }
-                    catch ( Exception e ) {
+                    } catch (Exception e) {
                         // TODO Exception?
                     }
 
                     callback.accept(models);
                 },
-                (error) -> { errorCallback.accept(error); }
+                (error) -> {
+                    errorCallback.accept(error);
+                }
         );
     }
 

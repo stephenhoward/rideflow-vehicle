@@ -7,8 +7,11 @@ import com.rideflow.vehicle.Model;
  */
 
 public class Route extends Model {
-    String id;
-    String name;
+
+    public String id;
+    public String name;
+
+    public Route() {}
 
     static public String url() {
         return "/routes";

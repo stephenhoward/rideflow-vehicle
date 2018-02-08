@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.rideflow.vehicle.R;
@@ -43,30 +44,32 @@ public class MainActivity extends Activity {
     }
 
     public void scanCard (View view) {
-        startSession();
+        authSession();
     }
 
-    protected void startSession() {
+    protected void authSession() {
 
-        View spinner = findViewById(R.id.progressBar);
-        spinner.setVisibility( View.VISIBLE );
+        findViewById(R.id.sessionError).setVisibility( View.INVISIBLE );
+        findViewById(R.id.progressBar ).setVisibility( View.VISIBLE );
 
-        RouteSession.beginSession(this::sessionOk, this::sessionFail );
+        RouteSession.beginSession(this::authSessionOk, this::authSessionFail );
 
     }
 
-    private void sessionOk( RouteSession session ) {
+    private void authSessionOk( RouteSession session ) {
 
-        View spinner = findViewById(R.id.progressBar);
-        spinner.setVisibility( View.INVISIBLE );
+        findViewById(R.id.progressBar).setVisibility( View.INVISIBLE );
 
         Intent intent = new Intent(this, StartSession.class);
         intent.putExtra(DRIVER_ID, "Hal");
         startActivity(intent);
     }
-    private void sessionFail( VolleyError error ) {
-        View spinner = findViewById(R.id.progressBar);
-        spinner.setVisibility( View.INVISIBLE );
+    private void authSessionFail( VolleyError error ) {
 
+        findViewById(R.id.progressBar ).setVisibility( View.INVISIBLE );
+        TextView error_text = findViewById(R.id.sessionError);
+
+        error_text.setText( error.getMessage() );
+        error_text.setVisibility( View.VISIBLE );
     }
 }
