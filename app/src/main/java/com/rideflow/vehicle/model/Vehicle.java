@@ -8,7 +8,6 @@ import com.rideflow.vehicle.Model;
 
 public class Vehicle extends Model {
 
-    public String id;
     public String name;
 
     public Vehicle() {}

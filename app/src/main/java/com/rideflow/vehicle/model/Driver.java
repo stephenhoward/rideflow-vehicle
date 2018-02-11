@@ -8,8 +8,6 @@ import com.rideflow.vehicle.Model;
 
 public class Driver extends Model {
 
-    public String id;
-
     public Driver() {}
 
     static public String url() {

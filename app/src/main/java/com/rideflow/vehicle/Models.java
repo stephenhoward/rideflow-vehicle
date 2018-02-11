@@ -23,7 +23,7 @@ public class Models {
 
     static public <M extends Model> void getAll(Class<M> model_class, Consumer<List<M>> callback, Consumer<VolleyError> errorCallback ) {
 
-        List<M> models = new ArrayList<M>;
+        List<M> models = new ArrayList<M>();
 
         API.getInstance().getList(M.url(),
                 (json) -> {

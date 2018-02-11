@@ -5,5 +5,6 @@ package com.rideflow.vehicle;
  */
 
 public interface hasID {
-    String id;
+
+    String getID();
 }

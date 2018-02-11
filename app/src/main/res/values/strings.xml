@@ -11,4 +11,6 @@
     <string name="resume_session">Resume Session</string>
     <string name="end_session">End Session</string>
     <string name="transit_system_logo_description">Transit</string>
+    <string name="switch_driver">Change Driver</string>
+    <string name="close_x">X</string>
 </resources>

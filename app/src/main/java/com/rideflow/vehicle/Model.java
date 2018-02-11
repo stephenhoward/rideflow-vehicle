@@ -14,7 +14,9 @@ import java.util.function.Consumer;
  * Created by stephen on 2/6/18.
  */
 
-public abstract class Model implements hasID {
+public abstract class Model {
+
+    public String id;
 
     static public String url() {
         return "";

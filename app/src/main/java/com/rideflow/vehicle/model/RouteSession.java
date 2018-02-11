@@ -14,7 +14,6 @@ import java.util.function.Consumer;
 
 public class RouteSession extends Model {
 
-    public String         id;
     public double         latitude;
     public double         longitude;
     public String         route_id;
@@ -26,6 +25,8 @@ public class RouteSession extends Model {
     Route route;
     Driver driver;
     Vehicle vehicle;
+
+    public String getID() { return id; };
 
     public RouteSession() {}
 
