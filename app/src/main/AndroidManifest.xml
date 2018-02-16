@@ -3,8 +3,9 @@
     package="com.rideflow.vehicle">
 
     <uses-permission android:name="android.permission.INTERNET"  />
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_SENSOR_DRIVERS" />
 
-    <application>
+    <application android:name=".RouteManager">
         <uses-library
             android:name="com.google.android.things"
             android:required="false" />

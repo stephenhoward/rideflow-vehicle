@@ -8,10 +8,6 @@ import com.rideflow.vehicle.Model;
 import java.time.OffsetDateTime;
 import java.util.function.Consumer;
 
-/**
- * Created by stephen on 1/26/18.
- */
-
 public class RouteSession extends Model {
 
     public double         latitude;
@@ -22,8 +18,8 @@ public class RouteSession extends Model {
     public OffsetDateTime session_start;
     public OffsetDateTime session_end;
 
-    Route route;
-    Driver driver;
+    Route   route;
+    Driver  driver;
     Vehicle vehicle;
 
     public String getID() { return id; };

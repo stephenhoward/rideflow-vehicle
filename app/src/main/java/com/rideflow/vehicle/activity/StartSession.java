@@ -11,28 +11,6 @@ import com.rideflow.vehicle.Models;
 import com.rideflow.vehicle.model.Route;
 import com.rideflow.vehicle.model.RouteSession;
 
-/**
- * Skeleton of an Android Things activity.
- *
- *
- * Android Things peripheral APIs are accessible through the class
- * PeripheralManagerService. For example, the snippet below will open a GPIO pin and
- * set it to HIGH:
- *
- *
- * <pre>`PeripheralManagerService service = new PeripheralManagerService();
- * mLedGpio = service.openGpio("BCM6");
- * mLedGpio.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW);
- * mLedGpio.setValue(true);
-`</pre> *
- *
- *
- * For more complex peripherals, look for an existing user-space driver, or implement one if none
- * is available.
- *
- * @see [https://github.com/androidthings/contrib-drivers.readme](https://github.com/androidthings/contrib-drivers.readme)
- */
-
 public class StartSession extends Activity implements logoutCountdown.OnTimeoutListener {
 
     public RouteSession route_session;
@@ -50,11 +28,10 @@ public class StartSession extends Activity implements logoutCountdown.OnTimeoutL
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.DRIVER_ID);
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.driverName);
-        textView.setText(message);
+        textView.setText("Temporary");
 
         countdown = (logoutCountdown) getFragmentManager().findFragmentById(R.id.logoutCountdown);
         countdown.startCountdown();

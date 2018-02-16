@@ -8,10 +8,6 @@ import com.rideflow.vehicle.Model;
 
 import java.util.function.Consumer;
 
-/**
- * Created by stephen on 2/4/18.
- */
-
 public class SessionStop extends Model {
 
         Location       location;
