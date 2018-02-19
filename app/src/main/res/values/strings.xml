@@ -13,4 +13,7 @@
     <string name="transit_system_logo_description">Transit</string>
     <string name="switch_driver">Change Driver</string>
     <string name="close_x">X</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="save_settings">Save Settings</string>
+    <string name="set_vehicle_name">Set Vehicle Designation</string>
 </resources>

@@ -26,7 +26,7 @@ public class API {
     private static RequestQueue queue   = null;
     private static String baseUrl = "https://rideapi.ourtransit.com/v1";
     private static Context context = null;
-    private static String auth_key = null;
+    private static String jwt = null;
     private static String auth_id = null;
 
     private API() {};
@@ -46,7 +46,15 @@ public class API {
         return queue;
     }
 
-    public void authorize(String new_auth_id, Consumer<Boolean> callback, Consumer<Boolean> errorCallback) {
+    public void updateAuthID(String new_auth_id) {
+
+    }
+
+    public void authorize(String new_auth_id, Consumer<Boolean> callback ) {
+
+        if ( new_auth_id == auth_id ) {
+            callback.accept(true);
+        }
 
         HashMap<String,String> params = new HashMap();
         params.put("id", new_auth_id );
@@ -54,7 +62,8 @@ public class API {
         doStringRequest( Request.Method.POST, "/auth", params,
             (response) -> {
 
-                auth_key = response;
+                jwt = response;
+                auth_id  = new_auth_id;
                 callback.accept(true);
             },
             (e) -> {
@@ -177,8 +186,8 @@ public class API {
     }
 
     public void addAuthHeader(Map<String,String> headers) {
-        if ( auth_key != null ) {
-            headers.put("Authorization", "Bearer " + auth_key );
+        if ( jwt != null ) {
+            headers.put("Authorization", "Bearer " + jwt);
         }
     }
 

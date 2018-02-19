@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.rideflow.vehicle.activity.StartSession" />
-        <activity android:name="com.rideflow.vehicle.activity.ManageSession"></activity>
+        <activity android:name="com.rideflow.vehicle.activity.ManageSession" />
+        <activity android:name="com.rideflow.vehicle.activity.SettingsActivity" />
     </application>
 
 </manifest>

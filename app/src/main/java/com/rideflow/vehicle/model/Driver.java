@@ -10,4 +10,6 @@ public class Driver extends Model {
         return "/users";
     }
 
+    public String name;
+
 }
